@@ -1,5 +1,13 @@
 *README*
 
+# Introduct #
+---
+[This repo](https://github.com/AlexStocks/muduo) is a fork of [chenshuo/muduo](https://github.com/chenshuo/muduo) in which you can not commit a issue.
+
+So I create another repo [penguin-diors/muduo](https://github.com/penguin-diors/muduo) which is a copy of [AlexStocks/muduo](https://github.com/AlexStocks/muduo) to track issues.
+
+Any issue of pr is welcome.
+
 # DOC #
 ---
 Muduo is based on boost which is a large monst lib. And muduo also use cmake to build & link. This branch just has two targets:
