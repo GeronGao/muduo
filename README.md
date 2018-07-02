@@ -2,7 +2,7 @@
 
 # Introduct #
 ---
-[This repo](https://github.com/AlexStocks/muduo) is a fork of [chenshuo/muduo](https://github.com/chenshuo/muduo) in which you can not commit a issue.
+[AlexStocks/muduo](https://github.com/AlexStocks/muduo) is a fork of [chenshuo/muduo](https://github.com/chenshuo/muduo) in which you can not commit a issue.
 
 So I create another repo [penguin-diors/muduo](https://github.com/penguin-diors/muduo) which is a copy of [AlexStocks/muduo](https://github.com/AlexStocks/muduo) to track issues.
 
