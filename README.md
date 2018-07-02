@@ -1,6 +1,6 @@
 *README*
 
-# Introduct #
+# Intro #
 ---
 [AlexStocks/muduo](https://github.com/AlexStocks/muduo) is a fork of [chenshuo/muduo](https://github.com/chenshuo/muduo) in which you can not commit a issue.
 
