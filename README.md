@@ -6,7 +6,7 @@
 
 So I create another repo [penguin-diors/muduo](https://github.com/penguin-diors/muduo) which is a copy of [AlexStocks/muduo](https://github.com/AlexStocks/muduo) to track issues.
 
-Any issue of pr is welcome.
+Any issue or pr is welcome.
 
 # DOC #
 ---
