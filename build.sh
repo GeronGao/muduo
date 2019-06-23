@@ -1,16 +1,16 @@
 #!/bin/sh
 #!/usr/bin/env bash
 # ******************************************************
-# DESC    : zookeeper devops script
-# AUTHOR  : Alex Stocks
+# DESC    : script for muduo install
+# AUTHOR  : Alex Stocks, Geron
 # VERSION : 1.0
 # LICENCE : LGPL V3
 # EMAIL   : alexstocks@foxmail.com
-# MOD     : 2016-05-13 02:01
+# MOD     : 2016-05-13 02:01,2019-06-23
 # FILE    : load.sh
 # ******************************************************
 
-name="zookeeper"
+#name="zookeeper"
 
 base=muduo/base/tests/lib
 net=muduo/net/tests/lib
@@ -18,21 +18,25 @@ contrib=contrib
 build=build
 
 usage() {
-    echo "Usage: $0 build [base | net | hiredis | all] # in default, build all."
-    echo "       $0 clean [base | net | hiredis | all] # in default, clean all."
+    echo "Usage: $0 build [base | net | all |install] # in default, build all."
+    echo "       $0 clean [base | net | all |install] # in default, clean all."
 }
+
+
 
 build() {
     target=$1
-    echo "target:" $target
+    echo "build " $target
     # make build dir.
     if [ ! -d "build" ]; then
-        mkdir -p $build/lib
+        mkdir -p $build
     fi
     if [ ! -d "bin" ]; then
         mkdir -p $build/bin
     fi
-
+    if [ ! -d "lib" ]; then
+        mkdir -p $build/lib
+    fi
     case C"$target" in
         Cbase)
             cd muduo/base/tests  && make -f makefile && cd -
@@ -42,24 +46,24 @@ build() {
             cd muduo/net/tests  && make -f makefile && cd -
             cp $net/libmuduo.a  $build/lib
             ;;
-        Chiredis)
-            cd $contrib/hiredis && make -f makefile && cd -
-            cp $contrib/hiredis/bin/* $build/bin
+        Cinstall)
+            sudo ln -sbv $build/lib /usr/lib/muduo
+            sudo mkdir -p /usr/include/muduo
+            sudo ln -sbv $build/muduo/base /usr/include/muduo/base
+            sudo ln -sbv $build/muduo/net /usr/include/muduo/net
             ;;
         C*)
             cd muduo/base/tests  && make -f makefile && cd -
             cp $base/libmuduo_base.a  $build/lib
             cd muduo/net/tests  && make -f makefile && cd -
             cp $net/libmuduo.a  $build/lib
-            cd $contrib/hiredis && make -f makefile && cd -
-            cp $contrib/hiredis/bin/* $build/bin
             ;;
     esac
 }
 
 clean() {
     target=$1
-    echo "target:" $target
+    echo "clean " $target
 
     case C"$target" in
         Cbase)
@@ -70,9 +74,13 @@ clean() {
             cd muduo/net/tests  && make -f makefile clean && cd -
             rm -rf $build/lib/libmuduo.a
             ;;
-        Chiredis)
-            cd $contrib/hiredis  && make -f makefile clean && cd -
-            rm -rf $build/bin/*
+        Cinstall)
+            if [ -d /usr/lib/muduo ]; then
+                sudo rm /usr/lib/muduo
+            fi
+            if [ -d /usr/include/muduo ]; then
+                sudo rm -r /usr/include/muduo
+            fi            
             ;;
         C*)
             cd muduo/base/tests  && make -f makefile clean && cd -

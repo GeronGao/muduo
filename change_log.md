@@ -1,3 +1,6 @@
+2019/6/23
+> link lib and .h to /usr dir.
+
 2017/10/17:
 > improvement
 
