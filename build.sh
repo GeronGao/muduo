@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 # ******************************************************
 # DESC    : script for muduo install
-# AUTHOR  : Alex Stocks, Geron
+# AUTHOR  : Alex Stocks
 # VERSION : 1.0
 # LICENCE : LGPL V3
 # EMAIL   : alexstocks@foxmail.com
